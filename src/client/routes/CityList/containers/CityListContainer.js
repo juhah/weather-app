@@ -1,5 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 export default () => (
-  <div>sd</div>
+  <div>
+    <Link to='/add'>Add new city</Link>
+  </div>
 )

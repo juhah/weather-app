@@ -43,7 +43,8 @@ const webpackConfig = {
     ]
   },
   devServer: {
-    contentBase : 'src/client'
+    contentBase : 'src/client',
+    historyApiFallback : true
   },
   plugins : [
     new webpack.DefinePlugin(config.globals)
