@@ -1,2 +1,10 @@
 node_modules
 babel_cache
+.DS_STORE
+*.log
+
+dist
+coverage
+
+.idea/
+
