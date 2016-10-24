@@ -12,6 +12,9 @@ export default (store) => ({
           dependencies for bundling   */
 
       const AddCity = require('./containers/AddCityContainer').default
+      const reducer = require('../../../../modules/cities').default
+
+      injectReducer(store, { key: 'cities', reducer : reducer })
 
       /*  Return getComponent   */
       cb(null, AddCity)

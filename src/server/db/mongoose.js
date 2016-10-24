@@ -13,6 +13,13 @@ var CitySchema = new Schema({
     }
 });
 
+CitySchema.set('toJSON', {
+    virtuals: true,
+    transform: function (doc, ret, options) {
+        delete ret._id;
+    }
+});
+
 connection.model('City', CitySchema, 'cities');
 
 module.exports = connection

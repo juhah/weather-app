@@ -11,6 +11,10 @@ export default (store) => ({
 
       const CityList = require('./containers/CityListContainer').default
 
+      const reducer = require('../../modules/weather').default
+      
+      injectReducer(store, { key: 'weather', reducer : reducer })
+
       /*  Return getComponent   */
       cb(null, CityList)
 
