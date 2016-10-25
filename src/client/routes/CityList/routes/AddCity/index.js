@@ -20,6 +20,6 @@ export default (store) => ({
       cb(null, AddCity)
 
     /* Webpack named bundle   */
-  }, 'add-city')
+  }, 'cities')
   }
 })

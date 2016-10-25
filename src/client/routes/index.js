@@ -2,7 +2,8 @@
 import CoreLayout from '../layouts/CoreLayout/CoreLayout'
 
 import CityListRoute from './CityList'
-import AddCityRoude from './CityList/routes/AddCity'
+import AddCityRoute from './CityList/routes/AddCity'
+import ViewCityRoute from './CityList/routes/ViewCity'
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -13,7 +14,8 @@ export const createRoutes = (store) => ([
     component   : CoreLayout,
     indexRoute  : CityListRoute(store),
     childRoutes : [
-      AddCityRoude(store)
+      AddCityRoute(store),
+      ViewCityRoute(store)
     ]
   }
 ])

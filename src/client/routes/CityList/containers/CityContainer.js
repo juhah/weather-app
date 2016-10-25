@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 
 import { fetchWeatherIfNeeded } from '../../../modules/weather'
 import City from '../components/City'
@@ -18,7 +19,9 @@ class CityContainer extends React.Component {
     if(city) {
       const { icon, maxTemp } = city.weather[0]
 
-      return <City name={city.name} time={city.updated} icon={icon} temperature={maxTemp} />
+      const title = <Link to={`/cities/${city.id}`}>{city.name}</Link>
+
+      return <City name={title} time={city.updated} icon={icon} temperature={maxTemp} />
     }
 
     return <CityLoader />

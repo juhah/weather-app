@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const config = {
   env : process.env.NODE_ENV || 'development',
@@ -26,8 +27,8 @@ const webpackConfig = {
       './src/client'
   ],
   output: {
-      path: path.join(__dirname, 'public'),
-      filename: 'bundle.js'
+      filename: 'bundle.js',
+      publicPath: '/'
   },
   devtool: 'inline-source-map',
   module: {
@@ -43,11 +44,21 @@ const webpackConfig = {
     ]
   },
   devServer: {
-    contentBase : 'src/client',
-    historyApiFallback : true
+    contentBase : './',
+    historyApiFallback: true,
+    hot: true
   },
   plugins : [
-    new webpack.DefinePlugin(config.globals)
+    new webpack.DefinePlugin(config.globals),
+    new HtmlWebpackPlugin({
+      template : 'src/client/index.html',
+      hash     : false,
+      filename : 'index.html',
+      inject   : 'body',
+      minify   : {
+        collapseWhitespace : true
+      }
+    })
   ]
 };
 
