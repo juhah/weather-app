@@ -4,7 +4,7 @@ import { Media } from 'react-bootstrap'
 export default ({ title }) => (
   <Media>
    <Media.Left>
-      <img width={64} height={64} src="/assets/thumbnail.png" alt="Image"/>
+      <img width={64} height={64} src="http://openweathermap.org/img/w/10d.png" alt="Image"/>
     </Media.Left>
     <Media.Body>
       <Media.Heading>Loading...</Media.Heading>

@@ -4,7 +4,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('./db/mongoose');
 
 //routes
-var cities = require('./routes/cities');
+var cities  = require('./routes/cities');
+var weather = require('./routes/weather');
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/', cities);
+app.use('/api/', weather);
 
 app.use(express.static(staticPath));
 app.use('/', express.static(staticPath));

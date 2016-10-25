@@ -16,8 +16,16 @@ export const searchCities = (search, callback) => {
     })
 }
 
+export const getWeather = (cityId, callback) => {
+  request.get(API_URL + `/weather/${cityId}`)
+    .end((err, res) => {
+      callback(res.body.data)
+    })
+}
+
 const weatherApi = {
-  searchCities
+  searchCities,
+  getWeather
 }
 
 export default weatherApi
