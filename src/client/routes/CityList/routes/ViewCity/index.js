@@ -9,6 +9,6 @@ export default (store) => ({
 
       cb(null, ViewCity)
 
-  }, 'viewCity')
+  }, 'view-city')
   }
 })
