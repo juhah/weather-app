@@ -21,11 +21,12 @@ class CityContainer extends React.Component {
     if(city) {
       const title = linkTitle ? <Link to={`/cities/${city.id}`}>{city.name}</Link> : city.name
 
-      const days = city.weather.map((w, index) => ({
+      const days = city.weather.slice(0, 5).map((w, index) => ({
         weekday : weekday(w.weekday, index !== 0),
         icon    : icon(w.icon),
         max     : w.maxTemp,
-        min     : w.minTemp
+        min     : w.minTemp,
+        description : w.description
       }))
 
       return <City name={title} time={city.updated} days={days} />

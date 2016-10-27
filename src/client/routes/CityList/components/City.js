@@ -29,7 +29,7 @@ function getTitle(name, time) {
   </Col>
 }
 
-function getCurrentDay({ weekday, icon, max, min}, time) {
+function getCurrentDay({ weekday, icon, max, min, description}, time) {
   return (
     <Col xs={3} className="current-day">
       <Row>
@@ -41,7 +41,7 @@ function getCurrentDay({ weekday, icon, max, min}, time) {
             </span>
             <span className="low"> / <span className="degrees">{min}&deg; </span><span className="unit">C</span></span>
           </div>
-          <div className="current-day-weekday">{weekday} {moment(time).format('D.M.Y')}</div>
+          <div className="current-day-weekday">{description}</div>
         </Col>
       </Row>
     </Col>

@@ -8,7 +8,19 @@ var WeatherSchema = new Schema({
     weekday : String,
     icon    : String,
     maxTemp : Number,
-    minTemp : Number
+    minTemp : Number,
+    dayTemp   : Number,
+    nightTemp : Number,
+    eveTemp   : Number,
+    mornTemp  : Number,
+    pressure  : Number,
+    humidity  : Number,
+    title       : String,
+    description : String,
+    windSpeed   : Number,
+    windDirection : Number,
+    clouds : Number,
+    snow   : Number
 }, { _id: false });
 
 var CitySchema = new Schema({
