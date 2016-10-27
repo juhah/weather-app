@@ -7,8 +7,11 @@ export default (store) => ({
     require.ensure([], (require) => {
       const ViewCity = require('./containers/ViewCityContainer').default
 
-      cb(null, ViewCity)
+      const reducer = require('modules/weather').default
 
+      injectReducer(store, { key: 'weather', reducer : reducer })
+
+      cb(null, ViewCity)
   }, 'view-city')
   }
 })

@@ -4,14 +4,12 @@ import { Link } from 'react-router'
 
 import CityContainer from './CityContainer'
 
-import 'weather-icons/css/weather-icons.css'
-
 function getCities(cities) {
   let list = []
 
   for(let cityId of cities) {
     list.push(
-      <CityContainer key={cityId} cityId={cityId} />
+      <CityContainer key={cityId} cityId={cityId} linkTitle={true} />
     )
   }
 
@@ -20,7 +18,6 @@ function getCities(cities) {
 
 const CityListContainer = ({ cities }) => (
   <div>
-    <i className="wi wi-night-sleet"></i>
       {getCities(cities)}
   </div>
 )

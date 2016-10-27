@@ -14,12 +14,12 @@ class CityContainer extends React.Component {
   }
 
   render() {
-    const { city } = this.props
+    const { city, linkTitle } = this.props
 
     if(city) {
       const { icon, maxTemp } = city.weather[0]
 
-      const title = <Link to={`/cities/${city.id}`}>{city.name}</Link>
+      const title = linkTitle ? <Link to={`/cities/${city.id}`}>{city.name}</Link> : city.name
 
       return <City name={title} time={city.updated} icon={icon} temperature={maxTemp} />
     }
@@ -28,12 +28,17 @@ class CityContainer extends React.Component {
   }
 }
 
+CityContainer.propTypes = {
+  cityId    : React.PropTypes.string.isRequired,
+  linkTitle : React.PropTypes.bool
+}
+
 const mapStateToProps = (state, ownProps) => {
   const { entities } = state.weather
   const { cityId }   = ownProps
 
   return {
-    city : entities.has(cityId) ? entities.get(cityId) : null
+    city : entities && entities.has(cityId) ? entities.get(cityId) : null
   }
 }
 
