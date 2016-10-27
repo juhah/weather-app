@@ -1,0 +1,70 @@
+.city-list-row {
+    margin-top: 20px;
+}
+
+.city-title .name {
+    font-size: 40px;
+}
+
+.city-title .time {
+  color: #999;
+  font-size: 0.9em;
+}
+
+.current-day {
+  border-right: 1px solid #ddd;
+}
+
+.current-day-icon {
+  font-size: 50px;
+  color: #999;
+}
+
+.current-day-temperature {
+  margin-bottom: 5px;
+}
+
+.current-day-temperature .high {
+    font-size: 35px;
+    color: #369;
+}
+
+.current-day-temperature .high .unit {
+  font-size: 0.8em;
+}
+
+.current-day-temperature .low {
+  font-size: 25px;
+}
+
+.current-day-temperature .low .unit {
+  font-size: 0.8em;
+}
+
+.current-day-weekday {
+  text-transform: uppercase;
+  color: #999;
+}
+
+.other-day {
+  text-align: center;
+}
+
+.other-day-title {
+  text-transform: uppercase;
+}
+
+.other-day-icon {
+  margin: 5px;
+  font-size: 20px;
+  color: #999;
+}
+
+.other-day-temperature .degrees {
+
+}
+
+.other-day-temperature .unit {
+  font-size: 0.8em;
+  color: #999;
+}

@@ -1,21 +1,62 @@
 import React from 'react'
-import { Media } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import moment from 'moment'
 
 import WeatherIcon from 'components/WeatherIcon'
-import { icon } from 'helpers/icons'
 
-export default ({ name, time, icon : iconName, temperature }) => (
-  <Media>
-    <Media.Body>
-      <Media.Heading>{name}</Media.Heading>
-      <p>Last updated {moment(time).fromNow()}.</p>
-    </Media.Body>
-    <Media.Right style={{'fontSize' : '26px'}}>
-      <WeatherIcon name={icon(iconName)} />
-    </Media.Right>
-    <Media.Right>
-      {temperature} &deg;C
-    </Media.Right>
-  </Media>
-)
+import './city.css'
+
+function getDayColumns(days) {
+  return days.map((weather) => getDayColumn(weather))
+}
+
+function getDayColumn({ weekday, icon, max}) {
+  return (
+    <Col xs={1} key={weekday} className="other-day">
+      <div className="other-day-title">{weekday}</div>
+      <div className="other-day-icon"><WeatherIcon name={icon} /></div>
+      <div className="other-day-temperature">
+        <span className="degrees">{max}&deg; </span><span className="unit">C</span>
+      </div>
+    </Col>
+  )
+}
+
+function getTitle(name, time) {
+  return <Col xs={5} className="city-title">
+    <div className="name">{name}</div>
+    <div className="time">updated {moment(time).fromNow()}</div>
+  </Col>
+}
+
+function getCurrentDay({ weekday, icon, max, min}, time) {
+  return (
+    <Col xs={3} className="current-day">
+      <Row>
+        <Col xs={4} className="current-day-icon"><WeatherIcon name={icon} /></Col>
+        <Col xs={8}>
+          <div className="current-day-temperature">
+            <span className="high">
+              <span className="degrees">{max}&deg; </span><span className="unit">C</span>
+            </span>
+            <span className="low"> / <span className="degrees">{min}&deg; </span><span className="unit">C</span></span>
+          </div>
+          <div className="current-day-weekday">{weekday} {moment(time).format('D.M.Y')}</div>
+        </Col>
+      </Row>
+    </Col>
+  )
+}
+
+export default ({ name, time, days }) => {
+  const currentDay = days[0]
+  const otherDays  = days.slice(1)
+
+  return (
+    <Row className="city-list-row">
+      {getTitle(name, time)}
+      {getCurrentDay(currentDay, time)}
+      {getDayColumns(otherDays)}
+    </Row>
+  )
+}

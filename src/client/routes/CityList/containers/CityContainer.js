@@ -5,6 +5,8 @@ import { Link } from 'react-router'
 import { fetchWeatherIfNeeded } from '../../../modules/weather'
 import City from '../components/City'
 import CityLoader from '../components/CityLoader'
+import { icon } from 'helpers/icons'
+import { weekday } from 'helpers/date'
 
 class CityContainer extends React.Component {
   componentDidMount() {
@@ -17,11 +19,16 @@ class CityContainer extends React.Component {
     const { city, linkTitle } = this.props
 
     if(city) {
-      const { icon, maxTemp } = city.weather[0]
-
       const title = linkTitle ? <Link to={`/cities/${city.id}`}>{city.name}</Link> : city.name
 
-      return <City name={title} time={city.updated} icon={icon} temperature={maxTemp} />
+      const days = city.weather.map((w, index) => ({
+        weekday : weekday(w.weekday, index !== 0),
+        icon    : icon(w.icon),
+        max     : w.maxTemp,
+        min     : w.minTemp
+      }))
+
+      return <City name={title} time={city.updated} days={days} />
     }
 
     return <CityLoader />
