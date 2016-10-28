@@ -15,6 +15,7 @@
 }
 
 .current-day-icon {
+  text-align: center;
   font-size: 50px;
   color: #999;
 }

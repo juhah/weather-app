@@ -1,6 +1,7 @@
 import React from 'react'
 
 import 'weather-icons/css/weather-icons.css'
+import 'weather-icons/css/weather-icons-wind.css'
 
 const WeatherIcon = ({ name, night }) => {
     let parts = []

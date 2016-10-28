@@ -6,6 +6,7 @@ var connection = mongoose.connect('mongodb://127.0.0.1:27017/weather');
 
 var WeatherSchema = new Schema({
     weekday : String,
+    date    : Date,
     icon    : String,
     maxTemp : Number,
     minTemp : Number,

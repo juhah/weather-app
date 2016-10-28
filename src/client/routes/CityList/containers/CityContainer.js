@@ -6,7 +6,6 @@ import { fetchWeatherIfNeeded } from '../../../modules/weather'
 import City from '../components/City'
 import CityLoader from '../components/CityLoader'
 import { icon } from 'helpers/icons'
-import { weekday } from 'helpers/date'
 
 class CityContainer extends React.Component {
   componentDidMount() {
@@ -22,7 +21,7 @@ class CityContainer extends React.Component {
       const title = linkTitle ? <Link to={`/cities/${city.id}`}>{city.name}</Link> : city.name
 
       const days = city.weather.slice(0, 5).map((w, index) => ({
-        weekday : weekday(w.weekday, index !== 0),
+        date    : w.date,
         icon    : icon(w.icon),
         max     : w.maxTemp,
         min     : w.minTemp,

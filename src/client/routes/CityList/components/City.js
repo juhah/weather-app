@@ -10,9 +10,13 @@ function getDayColumns(days) {
   return days.map((weather) => getDayColumn(weather))
 }
 
-function getDayColumn({ weekday, icon, max}) {
+function getDayColumn({ date, icon, max}) {
+  const dateObj = moment(date),
+    weekday = dateObj.format('ddd'),
+    dateStr = dateObj.format('YYYY-MM-DD');
+
   return (
-    <Col xs={1} key={weekday} className="other-day">
+    <Col xs={1} key={dateStr} className="other-day">
       <div className="other-day-title">{weekday}</div>
       <div className="other-day-icon"><WeatherIcon name={icon} /></div>
       <div className="other-day-temperature">
@@ -29,7 +33,7 @@ function getTitle(name, time) {
   </Col>
 }
 
-function getCurrentDay({ weekday, icon, max, min, description}, time) {
+function getCurrentDay({ date, icon, max, min, description}, time) {
   return (
     <Col xs={3} className="current-day">
       <Row>

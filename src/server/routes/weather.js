@@ -35,8 +35,12 @@ router.get('/weather/:cityId', function(req, res, next) {
             if (!error && response.statusCode == 200) {
                 var json = JSON.parse(body);
 
-                forecast = json.list.map((d) => ({
-                    weekday   : (new Date(d.dt * 1000)).getDay(),
+                forecast = json.list.map((d) => {
+                  var date = new Date(d.dt * 1000);
+
+                  return {
+                    weekday   : date.getDay(),
+                    date      : date,
                     icon      : d.weather[0].icon,
                     maxTemp   : round(kelvinToCelsius(d.temp.max), 0),
                     minTemp   : round(kelvinToCelsius(d.temp.min), 0),
@@ -52,7 +56,7 @@ router.get('/weather/:cityId', function(req, res, next) {
                     windDirection : d.deg,
                     clouds : d.clouds,
                     snow   : d.snow
-                  }));
+                  }});
 
                 doc.weather = forecast;
                 doc.updated = Date.now();

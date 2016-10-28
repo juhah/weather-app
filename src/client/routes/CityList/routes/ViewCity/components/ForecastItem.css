@@ -1,0 +1,55 @@
+.forecast {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.byline {
+  color: #999;
+}
+
+.icon {
+  text-align: center;
+  font-size: 30px;
+  color: #999;
+}
+
+.high-icon, .low-icon {
+  font-weight: bold;
+  padding-right: 10px;
+  font-size: 1.1em;
+}
+
+.high-icon {
+  color: green;
+}
+
+.low-icon {
+  color: maroon;
+}
+
+.degree {
+  color: #999;
+  font-size: 0.9em;
+}
+
+.forecast-column {
+  vertical-align: middle;
+  white-space: nowrap;
+  line-height: 40px;
+}
+
+.forecast-column .icon {
+  font-size: 20px;
+  color: #999;
+  padding-right: 10px;
+}
+
+.forecast-column .text {
+
+}

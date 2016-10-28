@@ -119,6 +119,7 @@
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.6",
+    "weather-icons": "erikflowers/weather-icons",
     "webpack": "^1.12.14",
     "yargs": "^5.0.0"
   },

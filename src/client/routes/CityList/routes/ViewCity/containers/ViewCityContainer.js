@@ -1,12 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Table } from 'react-bootstrap'
+import moment from 'moment'
 
 import { fetchWeatherIfNeeded } from 'modules/weather'
 import CityContainer from '../../../containers/CityContainer'
+import ForecastItem from '../components/ForecastItem'
 import { icon } from 'helpers/icons'
-import { weekday } from 'helpers/date'
-import WeatherIcon from 'components/WeatherIcon'
 
 class ViewCityContainer extends React.Component {
   getForecast() {
@@ -19,28 +18,30 @@ class ViewCityContainer extends React.Component {
     const { weather } = this.props.city
 
     for(let w of weather) {
-      const row = (
-        <tr key={w.weekday}>
-          <td>{weekday(w.weekday)}</td>
-          <td>
-            <WeatherIcon name={icon(w.icon)} />
-            {" "}
-            <span className="high">{w.maxTemp}&deg;C</span>
-            {" / "}
-            <span className="low">{w.minTemp}&deg;C</span>
-          </td>
-        </tr>
-      )
+      const dateObj = moment(w.date),
+        weekday = dateObj.format('dddd'),
+        dateStr = dateObj.format('D.M.Y');
 
-      rows.push(row)
+      rows.push(
+        <ForecastItem
+          key={dateStr}
+          title={weekday}
+          byLine={dateStr}
+          icon={icon(w.icon)}
+          high={w.maxTemp}
+          low={w.minTemp}
+          humidity={w.humidity}
+          pressure={w.pressure}
+          windSpeed={w.windSpeed}
+          windDirection={w.windDirection}
+          />
+      )
     }
 
     return (
-      <Table>
-        <tbody>
-          {rows}
-        </tbody>
-      </Table>
+      <div style={{'marginTop' : '40px', 'marginBottom' : '20px'}}>
+        {rows}
+      </div>
     )
   }
 
@@ -50,7 +51,6 @@ class ViewCityContainer extends React.Component {
     return (
       <div>
         <CityContainer cityId={cityId} />
-        <br />
         {::this.getForecast()}
       </div>
       )
